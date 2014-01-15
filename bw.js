@@ -52,6 +52,36 @@ bw.prototype.css = function( name, val ){
     }
 };
 
+bw.prototype.mouseenter = function( fn ){
+    for( var i = 0; i < this.elements.length; i++ ){
+        addEvent( this.elements[ i ], 'mouseover', function( ev ){
+            var from = ev.fromElement || ev.relatedTarget;
+            if ( isChild( this, from ) ) return;
+            fn && fn.call( this, ev );
+        } );
+    }
+};
+bw.prototype.mouseleave = function( fn ){
+    for( var i = 0; i < this.elements.length; i++ ){
+        addEvent( this.elements[ i ], 'mouseout', function( ev ){
+            var to = ev.toElement || ev.relatedTarget;
+            if( isChild( this, to ) ) return;
+            fn && fn.call( this, ev );
+
+        } );
+    }
+};
+bw.prototype.hover = function( fnOver, fnOut ){
+    this.mouseenter( fnOver );
+    this.mouseleave( fnOut );
+};
+function isChild( oParent, obj ){
+    while( obj ){
+        if( obj === oParent ) return true;
+        obj = obj.parentNode;
+    }
+    return false;
+}
 function getStyle( obj, style ){
     if( obj.currentStyle ){
         return obj.currentStyle[ style ];
@@ -64,7 +94,9 @@ function addEvent( obj, sEv, fn ){
     if( obj.addEventListener ){
         obj.addEventListener( sEv, fn, false );
     }else{
-        obj.attachEvent( 'on'+sEv, fn );
+        obj.attachEvent( 'on'+sEv, function(){
+            fn.call( obj, event );
+        } );
     }
 }
 
