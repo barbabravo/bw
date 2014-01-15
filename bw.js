@@ -21,11 +21,44 @@ function bw( arg ){
         }
     }
 }
-bw.prototype.click = function( fn ){
-    for( var i = 0; i < this.elements.length; i++ ){
-        addEvent( this.elements[ i ], 'click', fn );
+
+'click|mouseover|mouseout|focus|blur|change|keydown|keyup|contextmenu'.replace( /\w+/g, function( s ){
+    bw.prototype[ s ] = function( fn ){
+        for( var i = 0; i < this.elements.length; i++ ){
+            addEvent( this.elements[ i ], s, fn );
+        }
+    };
+} );
+
+bw.prototype.css = function( name, val ){
+    if( arguments.length === 2 ){
+        if( val.constructor === String ){
+            for( var i = 0; i < this.elements.length; i++ ){
+                this.elements[ i ].style[ name ] = val;
+            }
+        }
+    }else if( arguments.length === 1 ){
+        if( name.constructor === String ){
+            for( var i = 0; i < this.elements.length; i++ ){
+                return getStyle( this.elements[ i ], name );
+            }
+        }else if( typeof name === 'object' ){
+            for( var i in name ){
+                for( var j = 0; j < this.elements.length; j++ ){
+                    this.elements[ j ].style[ i ] = name[i];
+                }
+            }
+        }
     }
 };
+
+function getStyle( obj, style ){
+    if( obj.currentStyle ){
+        return obj.currentStyle[ style ];
+    }else{
+        return getComputedStyle( obj, false )[ style ];
+    }
+}
 
 function addEvent( obj, sEv, fn ){
     if( obj.addEventListener ){
@@ -34,7 +67,6 @@ function addEvent( obj, sEv, fn ){
         obj.attachEvent( 'on'+sEv, fn );
     }
 }
-
 
 function $( arg ){
     return new bw( arg );
