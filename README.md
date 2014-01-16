@@ -172,5 +172,10 @@ out：鼠标移出元素要触发的函数
 #####css( properties );  name类型为 Object[ 一个 属性-值 配对的对象 ]
 
 把一个“名/值对”对象设置为所有匹配元素的样式属性。
-    $( 'div' ).css( { width : '200px', height : '200px', background : 'red' } );  //等价于CSS中的 div{width:200px;height:200px;background:red;}
+
+    $( 'div' ).css( {  //等价于CSS中的 div{width:200px;height:200px;background:red;}
+        width : '200px',
+        height : '200px',
+        background : 'red' 
+    } );
 
