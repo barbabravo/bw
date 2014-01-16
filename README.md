@@ -10,9 +10,9 @@ bwJs
 
     $( 'element' );  // 这个选择器用法与 beJs 语法完全一样。
 
-#####事件  参数类型为 Function
+####事件  参数类型为 Function
 
-######页面载入 ready(fn); || $(fn);
+#####页面载入 ready(fn); || $(fn);
 
 当DOM载入完成时执行一个函数，简单地说，这个方法是window.load事件的替代方法。通过使用这个方法，可以在 DOM 加载完成时立即调用你所绑定的函数。
 
@@ -25,7 +25,7 @@ bwJs
     });
 
 
-######click( fn );
+#####click( fn );
 
 触发每一个匹配元素的 click 事件，事件启动后，执行 'fn' 回调函数
 
@@ -36,7 +36,7 @@ click 事件会在鼠标点击左键的时候触发。
     });
 
 
-######contextmenu( fn );
+#####contextmenu( fn );
 
 触发每一个匹配元素的 contextmenu 事件，事件启动后，执行 'fn' 回调函数
 
@@ -47,7 +47,7 @@ contextmenu 事件会在鼠标点击右键的时候触发。
     });
 
 
-######mouseover( fn );
+#####mouseover( fn );
 
 mouseover事件会在鼠标移入对象时触发，触发时执行 'fn' 回调函数
 
@@ -56,7 +56,7 @@ mouseover事件会在鼠标移入对象时触发，触发时执行 'fn' 回调�
     });
 
 
-######mouseout( fn );
+#####mouseout( fn );
 
 mouseout事件会在鼠标移出对象时触发，触发时执行 'fn' 回调函数
 
@@ -65,7 +65,7 @@ mouseout事件会在鼠标移出对象时触发，触发时执行 'fn' 回调函
     });
 
 
-######mouseenter( fn );
+#####mouseenter( fn );
 
 mouseenter事件会在鼠标移入对象时触发，触发时执行 'fn' 回调函数
 
@@ -74,7 +74,7 @@ mouseenter事件会在鼠标移入对象时触发，触发时执行 'fn' 回调�
     });
 
 
-######mouseleave( fn );
+#####mouseleave( fn );
 
 mouseleave事件会在鼠标移出对象时触发，触发时执行 'fn' 回调函数
 
@@ -83,7 +83,7 @@ mouseleave事件会在鼠标移出对象时触发，触发时执行 'fn' 回调�
     });
 
 
-######focus() || focus( fn );
+#####focus() || focus( fn );
 
 当focus事件不加参数的时候会设置该对象的状态为 focus
 
@@ -98,14 +98,14 @@ mouseleave事件会在鼠标移出对象时触发，触发时执行 'fn' 回调�
     });
 
 
-######blur( fn );
+#####blur( fn );
 
 在每一个匹配元素的blur事件中绑定一个处理函数。
 
     $( 'input' ).blur( function(){ alert( 'blur' ); } );  //所有input元素失去焦点的时候，执行函数弹出 'blur'
 
 
-######change( fn );
+#####change( fn );
 
 在每一个匹配元素的change事件中绑定一个处理函数。
 
@@ -116,7 +116,7 @@ change事件会在元素失去焦点的时候触发，也会当其值在获得�
     } );
 
 
-######keydown( fn );
+#####keydown( fn );
 
 在每一个匹配元素的keydown事件中绑定一个处理函数。
 
@@ -127,7 +127,7 @@ keydown事件会在键盘按下时触发。
     });
 
 
-######keyup( fn );
+#####keyup( fn );
 
 在每一个匹配元素的keyup事件中绑定一个处理函数。
 
@@ -138,7 +138,7 @@ keyup 事件会在键盘抬起时触发。
     });
 
 
-######hover( over, out );
+#####hover( over, out );
 
 一个模仿悬停事件（鼠标移动到一个对象上面及移出这个对象）的方法。
 
@@ -152,24 +152,24 @@ out：鼠标移出元素要触发的函数
         //Code
     });
 
-#####CSS
+####CSS
 
 
-######css( name );  name类型为 String
+#####css( name );  name类型为 String
 
 当css方法的参数为一个，并且参数类型为 String 时，该方法会返回第一个匹配元素的样式属性。简单的说就是'获取属性'
 
     $( 'p' ).css( 'color' );  //返回页面中第一个p元素的Color属性
 
 
-######css( name, val );  name类型为 String ，val类型为 String
+#####css( name, val );  name类型为 String ，val类型为 String
 
 在所有匹配的元素中，设置样式属性为 name 设置样式属性值为 val
 
     $( 'p' ).css( 'color', 'red' );  //设置所有 p 元素的color为red
 
 
-######css( properties );  name类型为 Object[ 一个 属性-值 配对的对象 ]
+#####css( properties );  name类型为 Object[ 一个 属性-值 配对的对象 ]
 
 把一个“名/值对”对象设置为所有匹配元素的样式属性。
     $( 'div' ).css( { width : '200px', height : '200px', background : 'red' } );  //等价于CSS中的 div{width:200px;height:200px;background:red;}
